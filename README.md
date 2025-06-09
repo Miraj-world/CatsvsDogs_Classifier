@@ -6,7 +6,7 @@ This project is a Convolutional Neural Network (CNN)-based image classifier that
 
 cats-vs-dogs-cnn/
 ├── cats_vs_dogs_CNN_87accuracy.ipynb # Main Jupyter notebook
-├── model/ # (Optional) Saved trained model
+├── model/ # Saved trained model
 ├── README.md # You're here
 
 ## 📊 Dataset
@@ -20,9 +20,12 @@ Used the **TensorFlow Datasets** version of the `cats_vs_dogs` dataset:
 ```python
 import tensorflow_datasets as tfds
 dataset, info = tfds.load('cats_vs_dogs', with_info=True, as_supervised=True)
+```
 
-🧠 Model Architecture
+## 🧠 Model Architecture
+
 Built using tf.keras.Sequential with a CNN architecture like:
+```python
 model = tf.keras.Sequential([
     tf.keras.layers.Rescaling(1./255),
     tf.keras.layers.Conv2D(32, 3, activation='relu'),
@@ -35,14 +38,15 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(1, activation='sigmoid')  # Binary classification
 ])
+```
 
-Loss Function: Binary Crossentropy
+## Loss Function: Binary Crossentropy
 
-Optimizer: Adam
+## Optimizer: Adam
 
-Metric: Accuracy
+## Metric: Accuracy
 
-🧪 Results
+## 🧪 Results
 
 - ✅ Validation Accuracy: ~87%
 
@@ -51,24 +55,26 @@ Metric: Accuracy
 - 📉 Includes training/validation loss and accuracy plots
 
 
-
-🧪 Sample Prediction Output
+## 🧪 Sample Prediction Output
 
 | Image                            | Prediction   | Actual |
 | -------------------------------- | ------------ | ------ |
 | ![sample](images/sample_dog.png) | `Dog` (0.92) | `Dog`  |
 | ![sample](images/sample_cat.png) | `Cat` (0.88) | `Cat`  |
 
-💾 Saving & Loading the Model
+## 💾 Saving & Loading the Model
 
 # Save
-model.save('model/cats_vs_dogs_cnn.h5')
+```python
+model.save('model/Model.h5')
+```
 
 # Load
 from tensorflow.keras.models import load_model
-model = load_model('model/cats_vs_dogs_cnn.h5')
-
-🚀 Future Improvements
+```python
+model = load_model('model/Model.h5')
+```
+## 🚀 Future Improvements
 
 - Add data augmentation (rotation, flipping)
 
@@ -76,19 +82,21 @@ model = load_model('model/cats_vs_dogs_cnn.h5')
 
 - Deploy using Streamlit or Flask
 
-📌 Requirements
+## 📌 Requirements
 
 Install these before running:
-	pip install tensorflow matplotlib numpy
-
-💡 Credits
+```python
+pip install tensorflow matplotlib numpy
+```
+## 💡 Credits
 
 Dataset: TensorFlow Datasets - cats_vs_dogs
 
 Frameworks: TensorFlow, Keras, NumPy, Matplotlib
 
-📎 License
+## 📎 License
 MIT License. Free to use and modify.
+
 
 
 
